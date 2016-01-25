@@ -7,7 +7,56 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gxlimeng Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.version>4.2.3.RELEASE</spring.version>
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<druid.version>1.0.13</druid.version>
+		<mysql.driver.version>5.1.30</mysql.driver.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
+
+		<!-- connection pool -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+
+		<!-- jdbc driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.driver.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- PERSISTENCE end -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>

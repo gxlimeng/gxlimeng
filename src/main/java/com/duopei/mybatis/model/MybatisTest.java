@@ -1,4 +1,4 @@
-package com.duopei.mybatis;
+package com.duopei.mybatis.model;
 
 import java.io.Reader;
 
@@ -19,7 +19,7 @@ public class MybatisTest {
 
 	static {
 		try {
-			reader = Resources.getResourceAsReader("mybatis.xml");
+			reader = Resources.getResourceAsReader("com/duopei/mybatis/model/user-mybatis.xml");
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 		} catch (Exception e) {
 			e.printStackTrace();

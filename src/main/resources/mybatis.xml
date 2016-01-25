@@ -4,23 +4,11 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="Users" type="com.duopei.mybatis.model.Users" />
+		<typeAlias alias="User" type="com.duopei.user.model.User" />
 	</typeAliases>
 
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://127.0.0.1:3306/gtrust" />
-				<property name="username" value="root" />
-				<property name="password" value="root" />
-			</dataSource>
-		</environment>
-	</environments>
-
 	<mappers>
-		<mapper resource="com/duopei/mybatis/model/Users.xml" />
+		<!-- <mapper resource="com/duopei/user/model/User.xml" /> -->
 	</mappers>
 
 </configuration>

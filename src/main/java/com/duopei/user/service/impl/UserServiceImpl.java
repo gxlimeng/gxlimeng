@@ -1,5 +1,7 @@
 package com.duopei.user.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,19 @@ public class UserServiceImpl implements UserService {
 
 	public User getUserById(User user) {
 		return userDao.getUserById(user);
+	}
+
+	public List<User> getUserLst(User user) {
+		return userDao.getUserLst(user);
+	}
+
+	public int insertUser(User user) {
+		return userDao.insertUser(user);
+	}
+
+	public int deleteUser(User user) {
+		return userDao.deleteUser(user);
+
 	}
 
 }

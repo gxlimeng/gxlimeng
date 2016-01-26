@@ -2,6 +2,8 @@ package com.duopei.user;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,23 +27,21 @@ public class TestUserService {
 		UserService service = (UserService) ctx.getBean("userService");
 		this.service = service;
 	}
+	
 
 	@Test
 	public void testInsertAccount() {
-		// 创建一个帐户
-		User user = new User();
-		user.setSno(103108);
-		user.setSname("123456");
+		User user = new User(123456, "test", "测试", "123456", "test", "test", 0, "测试账号");
 
-		// 将创建的帐户插入到数据库中
-		// service.insertUser(user);
-		// logger.debug("account id: " + account.getAccountId());
+		if(null != service.getUserById(user)){
+			service.deleteUser(user);
+		}
+		service.insertUser(user);
 
-		// 从数据库获取刚才插入的帐户
-		User userFromDb = service.getUserById(user);
+		List<User> userFromDb = service.getUserLst(null);
 		assertNotNull(userFromDb);
-		logger.info("name=" + userFromDb.getSname());
-		// assertEquals(account.getAccountId(), accountFromDb.getAccountId());
+		logger.info("USER-->>" + userFromDb);
+		//assertEquals(account.getAccountId(), accountFromDb.getAccountId());
 
 	}
 }

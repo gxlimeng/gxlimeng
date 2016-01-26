@@ -3,7 +3,95 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.duopei.user.dao.UserDao">
-	<select id="getUserById" parameterType="int" resultType="com.duopei.user.model.User">
-		select sno ,name sname from tuser where sno = #{sno}
+	<select id="getUserById" parameterType="com.duopei.user.model.User"
+		resultType="com.duopei.user.model.User">
+		SELECT
+		U.USER_NO AS userNo,
+		U.USER_CODE AS userCode,
+		U.USER_NAME AS userName,
+		U.USER_PWD AS userPwd,
+		U.USER_TEL AS userTel,
+		U.USER_EMAIL AS userEmail,
+		U.USER_STATUS AS userStatus,
+		U.COMMONS AS commons,
+		U.INSERT_ID AS insertId,
+		U.INSERT_DATE AS insertDate,
+		U.MODIFY_ID AS modifyId,
+		U.MODIFY_DATE AS modifyDate
+		FROM USERS U
+		WHERE 1=1
+		<if test="null != userNo and '' != userNo">
+			AND USER_NO = #{userNo}
+		</if>
 	</select>
+
+	<resultMap type="com.duopei.user.model.User" id="userMap">
+		<id property="userNo" column="userNo" />
+		<result property="userCode" column="userCode" />
+		<result property="userName" column="userName" />
+		<result property="userPwd" column="userPwd" />
+		<result property="userTel" column="userTel" />
+		<result property="userEmail" column="userEmail" />
+		<result property="userStatus" column="userStatus" />
+		<result property="commons" column="commons" />
+		<result property="insertId" column="insertId" />
+		<result property="insertDate" column="insertDate" />
+		<result property="modifyId" column="modifyId" />
+		<result property="modifyDate" column="modifyDate" />
+	</resultMap>
+
+	<select id="getUserLst" parameterType="com.duopei.user.model.User"
+		resultMap="userMap">
+		SELECT
+		U.USER_NO AS userNo,
+		U.USER_CODE AS userCode,
+		U.USER_NAME AS userName,
+		U.USER_PWD AS userPwd,
+		U.USER_TEL AS userTel,
+		U.USER_EMAIL AS userEmail,
+		U.USER_STATUS AS userStatus,
+		U.COMMONS AS commons,
+		U.INSERT_ID AS insertId,
+		U.INSERT_DATE AS insertDate,
+		U.MODIFY_ID AS modifyId,
+		U.MODIFY_DATE AS modifyDate
+		FROM USERS U
+		WHERE 1=1
+		<if test="null != userNo and '' != userNo">
+			AND USER_NO = #{userNo}
+		</if>
+	</select>
+	
+	<insert id="insertUser" parameterType="com.duopei.user.model.User">
+		INSERT INTO USERS (
+			USER_NO,
+			USER_CODE,
+			USER_NAME,
+			USER_PWD,
+			USER_TEL,
+			USER_EMAIL,
+			USER_STATUS,
+			COMMONS,
+			INSERT_ID,
+			INSERT_DATE
+		)
+		VALUES (	
+			#{userNo},
+			#{userCode},
+			#{userName},
+			#{userPwd},
+			#{userTel},
+			#{userEmail},
+			#{userStatus},
+			#{commons},
+			'000000',
+			NOW()
+		)
+	</insert>
+	
+	<delete id="deleteUser" parameterType="com.duopei.user.model.User">
+		DELETE FROM USERS
+		WHERE USER_NO = #{userNo}
+	</delete>
+	
 </mapper>

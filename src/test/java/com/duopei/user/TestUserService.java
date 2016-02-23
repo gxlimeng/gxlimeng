@@ -15,7 +15,7 @@ import com.duopei.user.service.UserService;
 
 public class TestUserService {
 
-	Logger logger = Logger.getLogger("TestUserService");
+	Logger logger = Logger.getLogger(TestUserService.class);
 
 	UserService service = null;
 

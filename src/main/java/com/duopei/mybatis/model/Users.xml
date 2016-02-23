@@ -4,6 +4,6 @@
 
 <mapper namespace="com.duopei.mybatis.model.UserMapper">
 	<select id="selectUserByID" parameterType="int" resultType="com.duopei.mybatis.model.Users">
-		select sno id,name userName from tuser where sno = #{id}
+		select user_no id,user_name userName from users where user_no = #{id}
 	</select>
 </mapper>

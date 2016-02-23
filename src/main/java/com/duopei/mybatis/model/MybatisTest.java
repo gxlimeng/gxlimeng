@@ -8,12 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 
-import com.duopei.log.LogTest;
-import com.duopei.mybatis.model.Users;
-
 public class MybatisTest {
 
-	private static Logger logger = Logger.getLogger(LogTest.class);
+	private static Logger logger = Logger.getLogger(MybatisTest.class);
 	private static SqlSessionFactory sqlSessionFactory;
 	private static Reader reader;
 

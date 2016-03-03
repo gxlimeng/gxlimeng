@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.duopei.user.dao.UserDao">
-	<select id="getUserById" parameterType="com.duopei.user.model.User"
-		resultType="com.duopei.user.model.User">
+  
+<mapper namespace="com.duopei.system.user.dao.UserMapper">
+	<select id="getUserById" parameterType="com.duopei.system.user.model.User" resultMap="userMap">
 		SELECT
 		U.USER_NO AS userNo,
 		U.USER_CODE AS userCode,
-		U.USER_NAME AS userName,
-		U.USER_PWD AS userPwd,
+		U.USER_NAME AS
+		userName,
+		U.USER_PWD
+		AS userPwd,
 		U.USER_TEL AS userTel,
-		U.USER_EMAIL AS userEmail,
+		U.USER_EMAIL AS
+		userEmail,
 		U.USER_STATUS AS userStatus,
 		U.COMMONS AS commons,
-		U.INSERT_ID AS insertId,
-		U.INSERT_DATE AS insertDate,
-		U.MODIFY_ID AS modifyId,
+		U.INSERT_ID AS
+		insertId,
+		U.INSERT_DATE AS
+		insertDate,
+		U.MODIFY_ID AS
+		modifyId,
 		U.MODIFY_DATE AS modifyDate
 		FROM USERS U
 		WHERE 1=1
@@ -25,7 +30,7 @@
 		</if>
 	</select>
 
-	<resultMap type="com.duopei.user.model.User" id="userMap">
+	<resultMap type="com.duopei.system.user.model.User" id="userMap">
 		<id property="userNo" column="userNo" />
 		<result property="userCode" column="userCode" />
 		<result property="userName" column="userName" />
@@ -40,20 +45,23 @@
 		<result property="modifyDate" column="modifyDate" />
 	</resultMap>
 
-	<select id="getUserLst" parameterType="com.duopei.user.model.User"
-		resultMap="userMap">
+	<select id="getUserLst" parameterType="com.duopei.system.user.model.User" resultMap="userMap">
 		SELECT
 		U.USER_NO AS userNo,
 		U.USER_CODE AS userCode,
-		U.USER_NAME AS userName,
+		U.USER_NAME AS
+		userName,
 		U.USER_PWD AS userPwd,
 		U.USER_TEL AS userTel,
-		U.USER_EMAIL AS userEmail,
+		U.USER_EMAIL AS
+		userEmail,
 		U.USER_STATUS AS userStatus,
 		U.COMMONS AS commons,
 		U.INSERT_ID AS insertId,
-		U.INSERT_DATE AS insertDate,
-		U.MODIFY_ID AS modifyId,
+		U.INSERT_DATE AS
+		insertDate,
+		U.MODIFY_ID AS
+		modifyId,
 		U.MODIFY_DATE AS modifyDate
 		FROM USERS U
 		WHERE 1=1
@@ -61,37 +69,38 @@
 			AND USER_NO = #{userNo}
 		</if>
 	</select>
-	
-	<insert id="insertUser" parameterType="com.duopei.user.model.User">
+
+	<insert id="insertUser" parameterType="com.duopei.system.user.model.User">
 		INSERT INTO USERS (
-			USER_NO,
-			USER_CODE,
-			USER_NAME,
-			USER_PWD,
-			USER_TEL,
-			USER_EMAIL,
-			USER_STATUS,
-			COMMONS,
-			INSERT_ID,
-			INSERT_DATE
+		USER_NO,
+		USER_CODE,
+		USER_NAME,
+		USER_PWD,
+		USER_TEL,
+		USER_EMAIL,
+		USER_STATUS,
+		COMMONS,
+		INSERT_ID,
+		INSERT_DATE
 		)
-		VALUES (	
-			#{userNo},
-			#{userCode},
-			#{userName},
-			#{userPwd},
-			#{userTel},
-			#{userEmail},
-			#{userStatus},
-			#{commons},
-			'000000',
-			NOW()
+		VALUES (
+		#{userNo},
+		#{userCode},
+		#{userName},
+		#{userPwd},
+		#{userTel},
+		#{userEmail},
+		#{userStatus},
+		#{commons},
+		'000000',
+		NOW()
 		)
 	</insert>
-	
-	<delete id="deleteUser" parameterType="com.duopei.user.model.User">
+
+	<delete id="deleteUser" parameterType="com.duopei.system.user.model.User">
 		DELETE FROM USERS
-		WHERE USER_NO = #{userNo}
+		WHERE
+		USER_NO = #{userNo}
 	</delete>
-	
+
 </mapper>

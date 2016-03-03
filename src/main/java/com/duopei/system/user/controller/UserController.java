@@ -1,4 +1,4 @@
-package com.duopei.user.controller;
+package com.duopei.system.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.duopei.user.model.User;
-import com.duopei.user.service.UserService;
+import com.duopei.system.user.model.User;
+import com.duopei.system.user.service.UserService;
 
 @Controller
 @RequestMapping("/userController")

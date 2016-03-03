@@ -1,4 +1,4 @@
-package com.duopei.user.model;
+package com.duopei.system.user.model;
 
 import com.duopei.base.BaseDto;
 

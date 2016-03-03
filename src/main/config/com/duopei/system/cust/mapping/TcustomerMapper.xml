@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.duopei.system.cust.dao.TcustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.duopei.system.cust.model.Tcustomer" >
+    <id column="CUST_NO" property="custNo" jdbcType="VARCHAR" />
+    <result column="CUST_CODE" property="custCode" jdbcType="VARCHAR" />
+    <result column="CUST_NAME" property="custName" jdbcType="VARCHAR" />
+    <result column="CUST_PWD" property="custPwd" jdbcType="VARCHAR" />
+    <result column="CUST_TEL" property="custTel" jdbcType="VARCHAR" />
+    <result column="CUST_EMAIL" property="custEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CUST_NO, CUST_CODE, CUST_NAME, CUST_PWD, CUST_TEL, CUST_EMAIL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tcustomer
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tcustomer
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.duopei.system.cust.model.Tcustomer" >
+    insert into tcustomer (CUST_NO, CUST_CODE, CUST_NAME, 
+      CUST_PWD, CUST_TEL, CUST_EMAIL
+      )
+    values (#{custNo,jdbcType=VARCHAR}, #{custCode,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, 
+      #{custPwd,jdbcType=VARCHAR}, #{custTel,jdbcType=VARCHAR}, #{custEmail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duopei.system.cust.model.Tcustomer" >
+    insert into tcustomer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custNo != null" >
+        CUST_NO,
+      </if>
+      <if test="custCode != null" >
+        CUST_CODE,
+      </if>
+      <if test="custName != null" >
+        CUST_NAME,
+      </if>
+      <if test="custPwd != null" >
+        CUST_PWD,
+      </if>
+      <if test="custTel != null" >
+        CUST_TEL,
+      </if>
+      <if test="custEmail != null" >
+        CUST_EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custNo != null" >
+        #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custCode != null" >
+        #{custCode,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="custPwd != null" >
+        #{custPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="custTel != null" >
+        #{custTel,jdbcType=VARCHAR},
+      </if>
+      <if test="custEmail != null" >
+        #{custEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duopei.system.cust.model.Tcustomer" >
+    update tcustomer
+    <set >
+      <if test="custCode != null" >
+        CUST_CODE = #{custCode,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null" >
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="custPwd != null" >
+        CUST_PWD = #{custPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="custTel != null" >
+        CUST_TEL = #{custTel,jdbcType=VARCHAR},
+      </if>
+      <if test="custEmail != null" >
+        CUST_EMAIL = #{custEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duopei.system.cust.model.Tcustomer" >
+    update tcustomer
+    set CUST_CODE = #{custCode,jdbcType=VARCHAR},
+      CUST_NAME = #{custName,jdbcType=VARCHAR},
+      CUST_PWD = #{custPwd,jdbcType=VARCHAR},
+      CUST_TEL = #{custTel,jdbcType=VARCHAR},
+      CUST_EMAIL = #{custEmail,jdbcType=VARCHAR}
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

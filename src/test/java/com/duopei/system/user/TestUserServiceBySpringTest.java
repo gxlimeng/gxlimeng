@@ -1,4 +1,4 @@
-package com.duopei.user;
+package com.duopei.system.user;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.duopei.user.model.User;
-import com.duopei.user.service.UserService;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.duopei.system.user.model.User;
+import com.duopei.system.user.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class) // equals extends
 										// SpringJUnit4ClassRunner
@@ -20,7 +22,7 @@ import com.duopei.user.service.UserService;
 public class TestUserServiceBySpringTest {
 
 	Logger logger = Logger.getLogger(TestUserServiceBySpringTest.class);
-	
+
 	@Autowired
 	UserService service = null;
 
@@ -35,8 +37,7 @@ public class TestUserServiceBySpringTest {
 
 		List<User> userFromDb = service.getUserLst(null);
 		assertNotNull(userFromDb);
-		logger.info("USER-->>" + userFromDb);
-		// assertEquals(account.getAccountId(), accountFromDb.getAccountId());
+		logger.info("USER-->>" + JSON.toJSONStringWithDateFormat(userFromDb, "yyyy/MM/dd hh:mm:ss", SerializerFeature.WriteDateUseDateFormat));
 
 	}
 }

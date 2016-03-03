@@ -1,10 +1,10 @@
-package com.duopei.user.dao;
+package com.duopei.system.user.dao;
 
 import java.util.List;
 
-import com.duopei.user.model.User;
+import com.duopei.system.user.model.User;
 
-public interface UserDao {
+public interface UserMapper {
 
 	public int insertUser(User user);
 

@@ -21,7 +21,7 @@ import com.duopei.system.user.service.UserService;
 @ContextConfiguration(locations = { "classpath:spring.xml", "classpath:spring-mybatis.xml" })
 public class TestUserServiceBySpringTest {
 
-	Logger logger = Logger.getLogger(TestUserServiceBySpringTest.class);
+	Logger logger = Logger.getLogger(getClass());
 
 	@Autowired
 	UserService service = null;

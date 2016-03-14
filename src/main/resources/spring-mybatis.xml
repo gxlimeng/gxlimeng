@@ -54,12 +54,12 @@
 	<!-- mybatis文件配置，扫描所有mapper文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
 		p:dataSource-ref="dataSource"
-		p:mapperLocations="classpath*:com/duopei/system/*/mapping/*Mapper.xml" />
+		p:mapperLocations="classpath*:com/duopei/*/*/mapping/*Mapper.xml" />
 		
 	<!-- configLocation为mybatis属性 mapperLocations为所有mapper -->
 
 	<!-- spring与mybatis整合配置，扫描所有dao -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" p:basePackage="com.duopei.system.*.dao"
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" p:basePackage="com.duopei.*.*.dao"
 		p:sqlSessionFactoryBeanName="sqlSessionFactory" />
 
 	<!-- 对数据源进行事务管理 -->

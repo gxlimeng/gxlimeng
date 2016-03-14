@@ -16,6 +16,6 @@
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<!-- 扫描文件（自动将servicec层注入） -->
-	<context:component-scan base-package="com.duopei.system.*.service" />
+	<context:component-scan base-package="com.duopei.*.*.service" />
 
 </beans>

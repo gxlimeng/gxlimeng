@@ -9,10 +9,13 @@ public class Constant {
 	public static final String _SUCCESS = "_SUCCESS";
 
 	/** 处理失败 **/
-	public static final String DEAL_FAIL = "DEAL_FAIL";
+	public static final String _FAIL = "_FAIL";
 
 	/** 处理异常 **/
-	public static final String DEAL_EXCEPTION = "DEAL_EXCEPTION";
+	public static final String _EXCEPTION = "_EXCEPTION";
+	
+	/** 过滤登录验证 **/
+	public static final String _FILTER_LOGIN[]  = {""}; 
 
 	/** session中存放用户信息的key **/
 	public static final String USERINFO = "USERINFO";
@@ -31,8 +34,6 @@ public class Constant {
 
 	/** session失效时间 **/
 	public static final String SESSION_INVALID_TIME = "SESSION_INVALID_TIME";
-
-	// public static final String HOST_URL = "http://coriger.com";
 
 	public static final String HOST_URL = "http://localhost:8080/Mr";
 

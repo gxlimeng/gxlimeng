@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
@@ -12,24 +14,25 @@
 
 	<!-- 配置自定义扫描包：自动扫描所有controller所有类,使其认为spring mvc控制器 -->
 	<context:component-scan base-package="com.duopei.*.*.controller" />
-	
-	<!--  启动Spring MVC的注解功能 , 完成请求和注解POJO的映射
-			Spring 3.0.x中使用了annotation-driven后，缺省使用DefaultAnnotationHandlerMapping 来注册handler method和request的mapping关系 
-			在spring mvc 3.1中，对应变更为 
-				DefaultAnnotationHandlerMapping -> org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping 
-				AnnotationMethodHandlerAdapter -> org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter 
-				AnnotationMethodHandlerExceptionResolver -> ExceptionHandlerExceptionResolver  
-	-->
-	
+
+	<!-- 启动Spring MVC的注解功能 , 完成请求和注解POJO的映射 Spring 3.0.x中使用了annotation-driven后，缺省使用DefaultAnnotationHandlerMapping 
+		来注册handler method和request的mapping关系 在spring mvc 3.1中，对应变更为 DefaultAnnotationHandlerMapping 
+		-> org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping 
+		AnnotationMethodHandlerAdapter -> org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter 
+		AnnotationMethodHandlerExceptionResolver -> ExceptionHandlerExceptionResolver -->
+
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
 
-	
-	<!-- 配置视图解析器  ：如何把handle方法返回值解析为实际的物理视图 -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
-	
-	<!--  -->
-	<mvc:default-servlet-handler/>
-	
+
+	<!-- 配置视图解析器 ：如何把handle方法返回值解析为实际的物理视图 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/" p:suffix=".jsp" />
+
+	<!-- 对静态资源文件的访问  方案一-->
+	<mvc:default-servlet-handler />
+	<!-- 对静态资源文件的访问 方案二 （二选一）  <mvc:resources mapping="/images/**" location="/images/" /> -->
+
 	<mvc:annotation-driven />
 
 </beans>

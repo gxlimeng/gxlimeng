@@ -14,6 +14,11 @@
 </head>
 
 <body>
+
+	<!-- CURD 测试   -->
+	<h4> CURD 测试  </h4>
+	<a href="user/show">CURD 测试</a>
+
 	<!-- MODEL ATTRIBUTE 测试   -->
 	<h4> MODEL ATTRIBUTE 测试  </h4>
 	<form action="testController/testModelAttributes.do" >

@@ -13,5 +13,8 @@ public interface UserMapper {
 	public List<User> getUserLst(User user);
 
 	public int deleteUser(User user);
+	
+    int updateByPrimaryKeySelective(User record);
 
+    int updateByPrimaryKey(User record);
 }

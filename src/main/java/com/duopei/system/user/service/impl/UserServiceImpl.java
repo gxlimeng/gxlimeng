@@ -11,12 +11,11 @@ import com.duopei.system.user.dao.UserMapper;
 import com.duopei.system.user.model.User;
 import com.duopei.system.user.service.UserService;
 
-
 @Service(value = "userService")
 public class UserServiceImpl implements UserService {
 
 	Logger logger = Logger.getLogger(getClass());
-	
+
 	@Autowired
 	private UserMapper userMapper;
 
@@ -49,15 +48,25 @@ public class UserServiceImpl implements UserService {
 		}
 		userMapper.insertUser(user);
 	}
-	
+
 	@Transactional
 	@Override
 	public void checkUser2(User user) {
 		if (null != userMapper.getUserById(user)) {
 			userMapper.deleteUser(user);
 		}
-		//int i = 20 / 0;
-		//logger.info("i"+i);
+		// int i = 20 / 0;
+		// logger.info("i"+i);
 		userMapper.insertUser(user);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(User record) {
+		return userMapper.updateByPrimaryKeySelective(record);
+	}
+
+	@Override
+	public int updateByPrimaryKey(User record) {
+		return userMapper.updateByPrimaryKey(record);
 	}
 }

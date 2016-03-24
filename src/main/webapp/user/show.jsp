@@ -9,7 +9,7 @@
 <title>show users</title>
 </head>
 <body>
-	<form action="ee" method="post">
+	<form action="null" method="post">
 		<input type="hidden" name="_method" value="DELETE" />
 	</form>
 	<h4 align="center">USERS LIST</h4>
@@ -39,8 +39,8 @@
 				<td>${user.userTel }</td>
 				<td>${user.userStatus }</td>
 				<td>${user.commons }</td>
-				<td><a href="userController/deleteUser/${user.userNo}">Edit</a></td>
-				<td><a class="delete" href="deleteUser/${user.userNo}">Delete</a></td>
+				<td><a href="${pageContext.request.contextPath}/user/editUser/${user.userNo}">Edit</a></td>
+				<td><a class="delete" href="${pageContext.request.contextPath}/user/deleteUser/${user.userNo}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -52,7 +52,7 @@
 
 	<script type="text/javascript">
 		$(function() {
-			$(".delete").click(function() {
+			$(".delete").click(function() { 
 				var href = $(this).attr("href");
 				$("form").attr("action", href).submit();
 				return false;

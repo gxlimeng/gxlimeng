@@ -24,24 +24,26 @@ import com.duopei.system.test.model.User;
 
 @Controller
 @RequestMapping("/testController")
-//@SessionAttributes(value = { "user" }, types = { String.class })
+// @SessionAttributes(value = { "user" }, types = { String.class })
 public class TestController {
 
 	Logger logger = Logger.getLogger(TestController.class);
 
 	private final String SUCCESS = "index";
 
-	@RequestMapping(value="testUpate")
-	public String TestUpate(User user){
-		logger.info("===========TestUpate"+JSON.toJSONString(user));
+	@RequestMapping(value = "testModelAttributes")
+	public String TestModelAttributes(User user,HttpServletRequest request) {
+		logger.info("===========TestUpate1=" + JSON.toJSONString(user));
+		logger.info("===========TestUpate2=" + user);
+		
 		return SUCCESS;
 	}
-	
-	
+
 	/**
 	 * http://localhost:8080/gxlimeng/testController/testSessionAttributes.do
 	 * 
-	 * @SessionAttributes(value = { "user" }, types = { String.class }) 把user对象或value值为String类型  都放入至session中
+	 * @SessionAttributes(value = { "user" }, types = { String.class })
+	 *                          把user对象或value值为String类型 都放入至session中
 	 * 
 	 * @param map
 	 * @return
@@ -151,8 +153,7 @@ public class TestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/testRequestParam")
-	public String TestRequestParam(@RequestParam(value = "userName") String userName,
-			@RequestParam(value = "age", required = false) Integer age, HttpServletRequest request,
+	public String TestRequestParam(@RequestParam(value = "userName") String userName, @RequestParam(value = "age", required = false) Integer age, HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.info("==========TestRequestParam  userName=" + userName + " age=" + age);
 		return SUCCESS;
@@ -170,8 +171,7 @@ public class TestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/testRequestHeader")
-	public String TestRequestHeader(@RequestHeader(value = "Accept-Language") String language,
-			HttpServletRequest request) {
+	public String TestRequestHeader(@RequestHeader(value = "Accept-Language") String language, HttpServletRequest request) {
 		logger.info("==========TestRequestHeader  =" + language);
 		return SUCCESS;
 	}
@@ -217,8 +217,7 @@ public class TestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/testPathVariable/{id}")
-	public String TestPathVariable(@PathVariable("id") Integer id, HttpServletRequest request,
-			HttpServletResponse response) {
+	public String TestPathVariable(@PathVariable("id") Integer id, HttpServletRequest request, HttpServletResponse response) {
 		logger.info("==========TestPathVariable=" + id);
 		return SUCCESS;
 	}

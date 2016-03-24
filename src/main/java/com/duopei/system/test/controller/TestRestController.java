@@ -35,6 +35,7 @@ public class TestRestController {
 	public String TestRestGet(@PathVariable("id") Integer id, HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.info("=========TestRestGet =" + id);
+		request.setAttribute("requestType", "rest get request");
 		return SUCCESS;
 	}
 
@@ -42,6 +43,7 @@ public class TestRestController {
 	public String TestRestPost(@PathVariable("id") Integer id, HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.info("=========TestRestPost =" + id);
+		request.setAttribute("requestType", "rest post request");
 		return SUCCESS;
 	}
 
@@ -49,6 +51,7 @@ public class TestRestController {
 	public String TestRestDelete(@PathVariable("id") Integer id, HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.info("=========TestRestDelete =" + id);
+		request.setAttribute("requestType", "rest delete request");
 		return SUCCESS;
 	}
 
@@ -56,6 +59,7 @@ public class TestRestController {
 	public String TestRestPut(@PathVariable("id") Integer id, HttpServletRequest request,
 			HttpServletResponse response) {
 		logger.info("=========TestRestPut =" + id);
+		request.setAttribute("requestType", "rest put request");
 		return SUCCESS;
 	}
 

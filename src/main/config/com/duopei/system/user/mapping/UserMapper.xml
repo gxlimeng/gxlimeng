@@ -23,7 +23,7 @@
 		U.MODIFY_ID AS
 		modifyId,
 		U.MODIFY_DATE AS modifyDate
-		FROM USERS U
+		FROM TUSERS U
 		WHERE 1=1
 		<if test="null != userNo and '' != userNo">
 			AND USER_NO = #{userNo}
@@ -63,7 +63,7 @@
 		U.MODIFY_ID AS
 		modifyId,
 		U.MODIFY_DATE AS modifyDate
-		FROM USERS U
+		FROM TUSERS U
 		WHERE 1=1
 		<if test="null != userNo and '' != userNo">
 			AND USER_NO = #{userNo}
@@ -71,7 +71,7 @@
 	</select>
 
 	<insert id="insertUser" parameterType="com.duopei.system.user.model.User">
-		INSERT INTO USERS (
+		INSERT INTO TUSERS (
 		USER_NO,
 		USER_CODE,
 		USER_NAME,
@@ -98,7 +98,7 @@
 	</insert>
 
 	<delete id="deleteUser" parameterType="com.duopei.system.user.model.User">
-		DELETE FROM USERS
+		DELETE FROM TUSERS
 		WHERE
 		USER_NO = #{userNo}
 	</delete>

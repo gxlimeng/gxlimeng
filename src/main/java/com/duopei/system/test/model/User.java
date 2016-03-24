@@ -30,12 +30,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userNo=" + userNo + ", userName=" + userName + ", userPwd=" + userPwd + ", userEmail=" + userEmail
-				+ ", address=" + address + "]";
+		return "User [userNo=" + userNo + ", userName=" + userName + ", userPwd=" + userPwd + ", userEmail=" + userEmail + "]";
 	}
 
-	public User(int userNo, String userCode, String userName, String userPwd, String userEmail, String userTel,
-			int userStatus, String commons) {
+	public User(int userNo, String userCode, String userName, String userPwd, String userEmail, String userTel, int userStatus, String commons) {
 		super();
 		this.userNo = userNo;
 		this.userName = userName;

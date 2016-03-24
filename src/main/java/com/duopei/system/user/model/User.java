@@ -15,12 +15,11 @@ public class User extends BaseDto {
 	private int userStatus;
 	private String commons;
 
-	public User(){
-		
+	public User() {
+
 	}
-	
-	public User(int userNo, String userCode, String userName, String userPwd, String userEmail, String userTel,
-			int userStatus, String commons) {
+
+	public User(int userNo, String userCode, String userName, String userPwd, String userEmail, String userTel, int userStatus, String commons) {
 		super();
 		this.userNo = userNo;
 		this.userCode = userCode;
@@ -32,11 +31,14 @@ public class User extends BaseDto {
 		this.commons = commons;
 	}
 
+	public User(Integer userNo) {
+		this.userNo = userNo;
+	}
+
 	@Override
 	public String toString() {
-		return "\n User [userNo=" + userNo + ", userCode=" + userCode + ", userName=" + userName + ", userPwd=" + userPwd
-				+ ", userEmail=" + userEmail + ", userTel=" + userTel + ", userStatus=" + userStatus + ", commons="
-				+ commons + "] ";
+		return "\n User [userNo=" + userNo + ", userCode=" + userCode + ", userName=" + userName + ", userPwd=" + userPwd + ", userEmail=" + userEmail + ", userTel=" + userTel + ", userStatus="
+				+ userStatus + ", commons=" + commons + "] ";
 	}
 
 	public int getUserNo() {

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.duopei.system.user.dao.UserMapper">
-	<select id="getUserById" parameterType="com.duopei.system.user.model.User" resultMap="userMap">
+	<select id="getUserById" parameterType="com.duopei.system.user.model.User"
+		resultMap="userMap">
 		SELECT
 		U.USER_NO AS userNo,
 		U.USER_CODE AS userCode,
@@ -45,7 +46,8 @@
 		<result property="modifyDate" column="modifyDate" />
 	</resultMap>
 
-	<select id="getUserLst" parameterType="com.duopei.system.user.model.User" resultMap="userMap">
+	<select id="getUserLst" parameterType="com.duopei.system.user.model.User"
+		resultMap="userMap">
 		SELECT
 		U.USER_NO AS userNo,
 		U.USER_CODE AS userCode,
@@ -103,4 +105,57 @@
 		USER_NO = #{userNo}
 	</delete>
 
+	<update id="updateByPrimaryKeySelective" parameterType="com.duopei.system.user.model.User">
+		update tusers
+		<set>
+			<if test="userCode != null">
+				USER_CODE = #{userCode,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				USER_NAME = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPwd != null">
+				USER_PWD = #{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="userTel != null">
+				USER_TEL = #{userTel,jdbcType=VARCHAR},
+			</if>
+			<if test="userEmail != null">
+				USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="userStatus != null">
+				USER_STATUS = #{userStatus,jdbcType=INTEGER},
+			</if>
+			<if test="commons != null">
+				COMMONS = #{commons,jdbcType=VARCHAR},
+			</if>
+			<if test="insertId != null">
+				INSERT_ID = #{insertId,jdbcType=VARCHAR},
+			</if>
+			<if test="insertDate != null">
+				INSERT_DATE = #{insertDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modifyId != null">
+				MODIFY_ID = #{modifyId,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyDate != null">
+				MODIFY_DATE = #{modifyDate,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where USER_NO = #{userNo,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.duopei.system.user.model.User">
+		update tusers
+		set
+			USER_CODE = #{userCode,jdbcType=VARCHAR},
+			USER_NAME = #{userName,jdbcType=VARCHAR},
+			USER_PWD = #{userPwd,jdbcType=VARCHAR},
+			USER_TEL = #{userTel,jdbcType=VARCHAR},
+			USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+			USER_STATUS = #{userStatus,jdbcType=INTEGER},
+			COMMONS = #{commons,jdbcType=VARCHAR},
+			MODIFY_ID = '000000' , <!-- #{modifyId,jdbcType=VARCHAR}, -->
+			MODIFY_DATE = NOW()
+		where USER_NO = #{userNo,jdbcType=INTEGER}
+	</update>
 </mapper>

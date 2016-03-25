@@ -12,10 +12,10 @@
 <body>
 
 	<form:form
-		action="${pageContext.request.contextPath}/user/saveUser"
+		action="${pageContext.request.contextPath}/user/save"
 		method="POST" modelAttribute="user">
 
-		<c:if test="${user.userName != null }">
+		<c:if test="${user.type != 'NORMAL' }">
 			<input type="hidden" name="_method" value="PUT" />
 		</c:if> 
 			userNo=<form:input path="userNo" />

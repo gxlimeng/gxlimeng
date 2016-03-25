@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.duopei.util.Constant;
+import com.duopei.util.constant.Constant;
 
 /**
  * @desc 会话拦截器

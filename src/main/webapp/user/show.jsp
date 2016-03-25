@@ -9,13 +9,14 @@
 <title>show users</title>
 </head>
 <body>
-	<form action="null" method="post">
-		<input type="hidden" name="_method" value="DELETE" />
-	</form>
 	<h4 align="center">USERS LIST</h4>
 	<h5>
-		<a href="adduser">Add User</a>
+		<a href="new">Add User</a>
 	</h5>
+	<form action="${pageContext.request.contextPath}/user/show" method="post">
+		Search : <input type="text" name="userNo" />
+		<button type="submit">Search</button>
+	</form>
 	<table>
 		<tr>
 			<th>userNo</th>
@@ -39,11 +40,16 @@
 				<td>${user.userTel }</td>
 				<td>${user.userStatus }</td>
 				<td>${user.commons }</td>
-				<td><a href="${pageContext.request.contextPath}/user/editUser/${user.userNo}">Edit</a></td>
-				<td><a class="delete" href="${pageContext.request.contextPath}/user/deleteUser/${user.userNo}">Delete</a></td>
+				<td><a href="${pageContext.request.contextPath}/user/edit/${user.userNo}">Edit</a></td>
+				<td><a class="delete" href="${pageContext.request.contextPath}/user/delete/${user.userNo}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<!-- delete 有post请求转换为delete请求使用  -->
+	<form id="delete" action="null" method="post">
+		<input type="hidden" name="_method" value="DELETE" />
+	</form>
 	<!-- Spring mvc 处理静态资源 -->
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="../jquery/jquery-2.2.1.min.js" type="text/javascript"></script>
@@ -52,9 +58,9 @@
 
 	<script type="text/javascript">
 		$(function() {
-			$(".delete").click(function() { 
+			$(".delete").click(function() {
 				var href = $(this).attr("href");
-				$("form").attr("action", href).submit();
+				$("#delete").attr("action", href).submit();
 				return false;
 			});
 		})

@@ -1,4 +1,4 @@
-package com.duopei.util;
+package com.duopei.util.constant;
 
 /**
  * @功能： 常量类

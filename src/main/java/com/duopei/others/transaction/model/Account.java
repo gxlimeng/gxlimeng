@@ -1,65 +1,29 @@
 package com.duopei.others.transaction.model;
 
-import java.util.Date;
+import com.duopei.base.BaseDto;
 
-public class Account {
-    private String custNo;
+public class Account extends BaseDto {
+	
+	private static final long serialVersionUID = -5775705201305282880L;
 
-    private Double amt;
+	private String custNo;
 
-    private String insertId;
+	private Double amt;
 
-    private Date insertDate;
+	public String getCustNo() {
+		return custNo;
+	}
 
-    private String modifyId;
+	public void setCustNo(String custNo) {
+		this.custNo = custNo == null ? null : custNo.trim();
+	}
 
-    private Date modifyDate;
+	public Double getAmt() {
+		return amt;
+	}
 
-    public String getCustNo() {
-        return custNo;
-    }
+	public void setAmt(Double amt) {
+		this.amt = amt;
+	}
 
-    public void setCustNo(String custNo) {
-        this.custNo = custNo == null ? null : custNo.trim();
-    }
-
-    public Double getAmt() {
-        return amt;
-    }
-
-    public void setAmt(Double amt) {
-        this.amt = amt;
-    }
-
-    public String getInsertId() {
-        return insertId;
-    }
-
-    public void setInsertId(String insertId) {
-        this.insertId = insertId == null ? null : insertId.trim();
-    }
-
-    public Date getInsertDate() {
-        return insertDate;
-    }
-
-    public void setInsertDate(Date insertDate) {
-        this.insertDate = insertDate;
-    }
-
-    public String getModifyId() {
-        return modifyId;
-    }
-
-    public void setModifyId(String modifyId) {
-        this.modifyId = modifyId == null ? null : modifyId.trim();
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-    }
 }

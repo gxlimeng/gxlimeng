@@ -16,6 +16,7 @@
 
 <body>
 	hello world!
+	<br /> 上传路径: ${ requestScope.filePath }
 	<br /> 时间: ${ requestScope.time }
 	<br /> 商品: ${ requestScope.items }
 	<br /> 用戶requestScope: ${ requestScope.user }

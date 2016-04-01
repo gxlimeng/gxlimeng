@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -9,20 +9,15 @@
 <title>show users</title>
 </head>
 <body> 
-		<h5 align="center">文件下周  HttpMessageConverter  </h5>
-		<a href="${pageContext.request.contextPath}/user/download"> download </a>
-		 <br/>
-		<h5 align="center">文件上传  HttpMessageConverter  </h5>
+		<h4 align="center">文件上传  HttpMessageConverter  </h4>
 	  <form action="${pageContext.request.contextPath}/user/messageConvert" enctype="multipart/form-data" method="post" name="form">
             <p><strong>文件上传：</strong></p> <input type="file" id="msgUploadFile" name="msgUploadFile" style="width:360px,opacity:0" >
-            <br/>
-            input:<input type="text"  name="text" >
             <br/>
             <input type="submit" value="提交" id="msgUploadFSubmit"> <br/>
         </form>
         
         
-	<h5 align="center">上传测试 </h5>
+	<h4 align="center">上传测试 </h4>
 	  <form action="${pageContext.request.contextPath}/user/upload" enctype="multipart/form-data" method="post" name="form">
             <p><strong>选择上传图片：</strong></p> <input type="file" id="uploadFile" name="uploadFile" style="width:360px,opacity:0" >
             <br/>
@@ -30,7 +25,7 @@
         </form>
 	
 	<br/>
-	<h5 align="center">自定义格式转换器测试 </h5>
+	<h4 align="center">自定义格式转换器测试 </h4>
 	<form action="${pageContext.request.contextPath}/user/convert" method="post">
 		<!-- 格式 例如： "5=userCode5=userName5=userPwd5=userEmail5=userTel5=0=commons5" -->
 		<pre>格式> "5=userCode5=userName5=userPwd5=userEmail5=userTel5=0=commons5"</pre>
@@ -39,7 +34,7 @@
 	</form>
 
 
-	<h5 align="center">USERS LIST  CURD  测试 </h5>
+	<h4 align="center">USERS LIST  CURD  测试 </h4>
 	<h5>
 		<a href="new">Add User</a>
 	</h5>

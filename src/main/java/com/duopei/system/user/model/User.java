@@ -1,16 +1,26 @@
 package com.duopei.system.user.model;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+
 import com.duopei.base.BaseDto;
 
 public class User extends BaseDto {
 
 	private static final long serialVersionUID = -1146355170439214947L;
 
+	@NotNull
 	private int userNo;
+	@NotNull
 	private String userCode;
+	@NotNull
 	private String userName;
+	@NotNull
 	private String userPwd;
+	@Email
 	private String userEmail;
+	
 	private String userTel;
 	private int userStatus;
 	private String commons;

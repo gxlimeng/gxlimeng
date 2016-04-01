@@ -29,10 +29,35 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/" p:suffix=".jsp" />
 
-	<!-- 对静态资源文件的访问  方案一-->
+	<!-- 对静态资源文件的访问 方案一 -->
 	<mvc:default-servlet-handler />
-	<!-- 对静态资源文件的访问 方案二 （二选一）  <mvc:resources mapping="/images/**" location="/images/" /> -->
+	<!-- 对静态资源文件的访问 方案二 （二选一） <mvc:resources mapping="/images/**" location="/images/" 
+		/> -->
 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven conversion-service="convertService" />
+
+	<!-- 配置Spring-convertService -->
+	<bean id="convertService"
+		class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="userConverter" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- 配置上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="resolveLazily" value="true" />
+		<property name="maxUploadSize" value="29900200" />
+	</bean>
+
+	<!-- 配置国际化资源文件路径 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n"> 
+		</property>
+	</bean>
 
 </beans>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.duopei.other.transaction.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.duopei.other.transaction.model.Account" >
+    <id column="CUST_NO" property="custNo" jdbcType="VARCHAR" />
+    <result column="AMT" property="amt" jdbcType="DECIMAL" />
+    <result column="INSERT_ID" property="insertId" jdbcType="VARCHAR" />
+    <result column="INSERT_DATE" property="insertDate" jdbcType="DATE" />
+    <result column="MODIFY_ID" property="modifyId" jdbcType="VARCHAR" />
+    <result column="MODIFY_DATE" property="modifyDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CUST_NO, AMT, INSERT_ID, INSERT_DATE, MODIFY_ID, MODIFY_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from taccount
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from taccount
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.duopei.other.transaction.model.Account" >
+    insert into taccount (CUST_NO, AMT, INSERT_ID, 
+      INSERT_DATE, MODIFY_ID, MODIFY_DATE
+      )
+    values (#{custNo,jdbcType=VARCHAR}, #{amt,jdbcType=DECIMAL}, #{insertId,jdbcType=VARCHAR}, 
+      #{insertDate,jdbcType=DATE}, #{modifyId,jdbcType=VARCHAR}, #{modifyDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duopei.other.transaction.model.Account" >
+    insert into taccount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custNo != null" >
+        CUST_NO,
+      </if>
+      <if test="amt != null" >
+        AMT,
+      </if>
+      <if test="insertId != null" >
+        INSERT_ID,
+      </if>
+      <if test="insertDate != null" >
+        INSERT_DATE,
+      </if>
+      <if test="modifyId != null" >
+        MODIFY_ID,
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custNo != null" >
+        #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="amt != null" >
+        #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="insertId != null" >
+        #{insertId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=DATE},
+      </if>
+      <if test="modifyId != null" >
+        #{modifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duopei.other.transaction.model.Account" >
+    update taccount
+    <set >
+      <if test="amt != null" >
+        AMT = #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="insertId != null" >
+        INSERT_ID = #{insertId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        INSERT_DATE = #{insertDate,jdbcType=DATE},
+      </if>
+      <if test="modifyId != null" >
+        MODIFY_ID = #{modifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE = #{modifyDate,jdbcType=DATE},
+      </if>
+    </set>
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duopei.other.transaction.model.Account" >
+    update taccount
+    set AMT = #{amt,jdbcType=DECIMAL},
+      INSERT_ID = #{insertId,jdbcType=VARCHAR},
+      INSERT_DATE = #{insertDate,jdbcType=DATE},
+      MODIFY_ID = #{modifyId,jdbcType=VARCHAR},
+      MODIFY_DATE = #{modifyDate,jdbcType=DATE}
+    where CUST_NO = #{custNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.duopei.other.transaction.dao.StockMapper" >
+  <resultMap id="BaseResultMap" type="com.duopei.other.transaction.model.Stock" >
+    <id column="wh_code" property="whCode" jdbcType="VARCHAR" />
+    <id column="item_code" property="itemCode" jdbcType="VARCHAR" />
+    <id column="unit_code" property="unitCode" jdbcType="VARCHAR" />
+    <result column="qty" property="qty" jdbcType="DOUBLE" />
+    <result column="oper_grogram" property="operGrogram" jdbcType="VARCHAR" />
+    <result column="insert_id" property="insertId" jdbcType="VARCHAR" />
+    <result column="insert_date" property="insertDate" jdbcType="DATE" />
+    <result column="modify_id" property="modifyId" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wh_code, item_code, unit_code, qty, oper_grogram, insert_id, insert_date, modify_id, 
+    modify_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.duopei.other.transaction.model.StockKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from tstock
+    where wh_code = #{whCode,jdbcType=VARCHAR}
+      and item_code = #{itemCode,jdbcType=VARCHAR}
+      and unit_code = #{unitCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.duopei.other.transaction.model.StockKey" >
+    delete from tstock
+    where wh_code = #{whCode,jdbcType=VARCHAR}
+      and item_code = #{itemCode,jdbcType=VARCHAR}
+      and unit_code = #{unitCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.duopei.other.transaction.model.Stock" >
+    insert into tstock (wh_code, item_code, unit_code, 
+      qty, oper_grogram, insert_id, 
+      insert_date, modify_id, modify_date
+      )
+    values (#{whCode,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{unitCode,jdbcType=VARCHAR}, 
+      #{qty,jdbcType=DOUBLE}, #{operGrogram,jdbcType=VARCHAR}, #{insertId,jdbcType=VARCHAR}, 
+      #{insertDate,jdbcType=DATE}, #{modifyId,jdbcType=VARCHAR}, #{modifyDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.duopei.other.transaction.model.Stock" >
+    insert into tstock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="whCode != null" >
+        wh_code,
+      </if>
+      <if test="itemCode != null" >
+        item_code,
+      </if>
+      <if test="unitCode != null" >
+        unit_code,
+      </if>
+      <if test="qty != null" >
+        qty,
+      </if>
+      <if test="operGrogram != null" >
+        oper_grogram,
+      </if>
+      <if test="insertId != null" >
+        insert_id,
+      </if>
+      <if test="insertDate != null" >
+        insert_date,
+      </if>
+      <if test="modifyId != null" >
+        modify_id,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="whCode != null" >
+        #{whCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unitCode != null" >
+        #{unitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null" >
+        #{qty,jdbcType=DOUBLE},
+      </if>
+      <if test="operGrogram != null" >
+        #{operGrogram,jdbcType=VARCHAR},
+      </if>
+      <if test="insertId != null" >
+        #{insertId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        #{insertDate,jdbcType=DATE},
+      </if>
+      <if test="modifyId != null" >
+        #{modifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.duopei.other.transaction.model.Stock" >
+    update tstock
+    <set >
+      <if test="qty != null" >
+        qty = #{qty,jdbcType=DOUBLE},
+      </if>
+      <if test="operGrogram != null" >
+        oper_grogram = #{operGrogram,jdbcType=VARCHAR},
+      </if>
+      <if test="insertId != null" >
+        insert_id = #{insertId,jdbcType=VARCHAR},
+      </if>
+      <if test="insertDate != null" >
+        insert_date = #{insertDate,jdbcType=DATE},
+      </if>
+      <if test="modifyId != null" >
+        modify_id = #{modifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=DATE},
+      </if>
+    </set>
+    where wh_code = #{whCode,jdbcType=VARCHAR}
+      and item_code = #{itemCode,jdbcType=VARCHAR}
+      and unit_code = #{unitCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.duopei.other.transaction.model.Stock" >
+    update tstock
+    set qty = #{qty,jdbcType=DOUBLE},
+      oper_grogram = #{operGrogram,jdbcType=VARCHAR},
+      insert_id = #{insertId,jdbcType=VARCHAR},
+      insert_date = #{insertDate,jdbcType=DATE},
+      modify_id = #{modifyId,jdbcType=VARCHAR},
+      modify_date = #{modifyDate,jdbcType=DATE}
+    where wh_code = #{whCode,jdbcType=VARCHAR}
+      and item_code = #{itemCode,jdbcType=VARCHAR}
+      and unit_code = #{unitCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

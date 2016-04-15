@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.duopei.other.rest.dao.TUsersMapper" >
+  
+	<select id="selectUsers" resultType="com.duopei.core.model.user.User" parameterType="com.duopei.core.model.user.User" >
+		SELECT 
+		    NO no,
+		    USER_CODE userCode,
+		    USER_NAME userName,
+		    USER_PWD userPwd,
+		    USER_TEL userTel,
+		    USER_EMAIL userEmail,
+		    USER_STATUS userStatus,
+		    COMMONS commons,
+		    LAST_LOGIN_TIME lastLoginTime,
+		    LAST_UPDATE_PWD_DATE lastUpdatePwdDate,
+		    INSERT_ID insertId,
+		    INSERT_DATE insertDate,
+		    MODIFY_ID modifyId,
+		    MODIFY_DATE modifyDate
+		FROM TUSERS
+		WHERE 1 = 1
+		 	<if test="no != null" >
+				AND NO = #{no,jdbcType=INTEGER}
+			</if>
+		 	<if test="userName != null" >
+				AND USER_NAME LIKE '%' || #{userName,jdbcType=VARCHAR} || '%'
+			</if>
+	</select>
+  
+	<delete id="delete" parameterType="com.duopei.core.model.user.User" >
+	  delete from tusers
+	  where NO = #{no,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.duopei.core.model.user.User">
+		insert into tusers (NO, USER_CODE, USER_NAME,
+		USER_PWD, USER_TEL, USER_EMAIL,
+		USER_STATUS, COMMONS, INSERT_ID,
+		INSERT_DATE	)
+		values (#{no,jdbcType=INTEGER}, #{userCode,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR},
+		#{userPwd,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR},
+		'1', #{commons,jdbcType=VARCHAR},
+		'000000', NOW() )
+	</insert>
+	
+	 <update id="updateByPrimaryKey" parameterType="com.duopei.core.model.user.User" >
+	    update tusers
+	    set USER_CODE = #{userCode,jdbcType=VARCHAR},
+	      USER_NAME = #{userName,jdbcType=VARCHAR},
+	      USER_PWD = #{userPwd,jdbcType=VARCHAR},
+	      USER_TEL = #{userTel,jdbcType=VARCHAR},
+	      USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+	      COMMONS = #{commons,jdbcType=VARCHAR}, 
+	      MODIFY_ID = '000000',
+	      MODIFY_DATE = NOW()
+	    where NO = #{no,jdbcType=INTEGER}
+	</update>
+</mapper>

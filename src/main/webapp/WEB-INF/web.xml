@@ -27,7 +27,7 @@
 	<!-- Login 过滤器，登录验证 -->
 	<filter>
 		<filter-name>LoginFilter</filter-name>
-		<filter-class>com.duopei.system.web.LoginFilter</filter-class>
+		<filter-class>com.duopei.core.filter.LoginFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>LoginFilter</filter-name>
@@ -66,6 +66,28 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!-- druid 监控配置 -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
 	<welcome-file-list>
 		<welcome-file>/login.jsp</welcome-file>
 	</welcome-file-list>

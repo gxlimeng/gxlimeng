@@ -34,9 +34,11 @@
 	<!-- 对静态资源文件的访问 方案二 （二选一） <mvc:resources mapping="/images/**" location="/images/" 
 		/> -->
 
+	<mvc:annotation-driven />
+	<!-- 
 	<mvc:annotation-driven conversion-service="convertService" />
 
-	<!-- 配置Spring-convertService -->
+	 配置Spring-convertService 
 	<bean id="convertService"
 		class="org.springframework.context.support.ConversionServiceFactoryBean">
 		<property name="converters">
@@ -45,7 +47,7 @@
 			</set>
 		</property>
 	</bean>
-
+	-->
 	<!-- 配置上传 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -59,5 +61,24 @@
 		<property name="basename" value="i18n"> 
 		</property>
 	</bean>
+
+	<!-- 配置_Druid和Spring关联监控配置 -->
+	<bean id="druid-stat-interceptor"
+		class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+	</bean>
+
+	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+		scope="prototype">
+		<property name="patterns">
+			<list>
+				<value>com.duopei.system.user.controller.UserController.*</value>
+			</list>
+		</property>
+	</bean>
+
+	<aop:config proxy-target-class="true">
+		<aop:advisor advice-ref="druid-stat-interceptor"
+			pointcut-ref="druid-stat-pointcut" />
+	</aop:config>
 
 </beans>
